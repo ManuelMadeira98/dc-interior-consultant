@@ -1,0 +1,27 @@
+
+<nav class="nav">
+	<div class="nav__hamburguer" *ngIf="isMobileOrTablet$ | async; else desktopMenu" (click)="menuIsOpen = !menuIsOpen">
+		<div class="nav__hamburguer__line"></div>
+		<div class="nav__hamburguer__line"></div>
+		<div class="nav__hamburguer__line"></div>
+	</div>
+
+	<div class="nav__mobile" [class.active]="menuIsOpen">
+		<div *ngTemplateOutlet="menu"></div> 
+	</div>
+
+	<ng-template #desktopMenu>
+		<div *ngTemplateOutlet="menu"></div>
+	</ng-template>
+</nav>
+
+<!-- Menu items template -->
+
+<ng-template #menu>
+	<ul class="nav__menu">
+		<li><a href="#" [tabIndex]="1" title="Home">Home</a></li>
+		<li><a href="#" [tabIndex]="2" title="Collection">Collection</a></li>
+		<li><a href="#" [tabIndex]="3" title="About">About</a></li>
+		<li><a href="#" [tabIndex]="4" title="Contact">Contact</a></li>
+	</ul>
+</ng-template>
