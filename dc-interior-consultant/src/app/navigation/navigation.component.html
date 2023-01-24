@@ -1,9 +1,13 @@
 
 <nav class="nav">
-	<div class="nav__hamburguer" *ngIf="isMobileOrTablet$ | async; else desktopMenu" (click)="menuIsOpen = !menuIsOpen">
-		<div class="nav__hamburguer__line"></div>
-		<div class="nav__hamburguer__line"></div>
-		<div class="nav__hamburguer__line"></div>
+	<div class="nav__icon" *ngIf="(isMobileOrTablet$ | async); else desktopMenu" (click)="menuIsOpen = !menuIsOpen">
+		<div class="nav__icon__hamburguer" [class.inactive]="menuIsOpen">
+			<div class="nav__icon__hamburguer__line"></div>
+			<div class="nav__icon__hamburguer__line"></div>
+			<div class="nav__icon__hamburguer__line"></div>
+		</div>
+
+		<span class="nav__icon__close material-symbols-outlined" [class.active]="menuIsOpen">close</span>
 	</div>
 
 	<div class="nav__mobile" [class.active]="menuIsOpen">
@@ -16,7 +20,6 @@
 </nav>
 
 <!-- Menu items template -->
-
 <ng-template #menu>
 	<ul class="nav__menu">
 		<li><a href="#" [tabIndex]="1" title="Home">Home</a></li>

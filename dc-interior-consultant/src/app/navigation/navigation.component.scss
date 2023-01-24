@@ -1,14 +1,32 @@
 .nav {
-	&__hamburguer {
-		position: relative;
+	&__icon {
 		z-index: 2;
+		position: relative;
+		display: flex;
+		place-items: center;
+	
+		&__hamburguer {
+			position: absolute;
+			right: 0;
+            opacity: 1;
+			visibility: visible;
+			transition: all 0.3s ease-in-out;
 
-		&__line {
-			z-index: 5;
-			width: 29px;
-			height: 3px;
-			background-color: #fff;
-			margin: 5px 0;
+			&__line {
+				z-index: 5;
+				width: 25px;
+				height: 3px;
+				background-color: #fff;
+				margin: 5px 0;
+			}
+		}
+
+		&__close {
+			display: block;
+			transition: all 0.3s ease-in-out;
+			transform: scale(1.5);
+			opacity: 0;
+			visibility: hidden;
 		}
 	}
 
@@ -24,11 +42,6 @@
 		opacity: 0;
 		visibility: hidden;
 		transition: all 0.3s ease-in-out;
-
-		&.active {
-			opacity: 1;
-			visibility: visible;
-		}
 	}
 
 	&__menu {
@@ -44,7 +57,6 @@
 			outline: none;
 			border-bottom: 2px solid transparent;
 
-
 			a {
 				outline: none;
 				text-decoration: none;
@@ -59,6 +71,17 @@
 			}
 		}
 	}
+}
+
+/* Opacity transition states */
+.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.inactive {
+	opacity: 0;
+	visibility: hidden;
 }
 
 @media (width >= 992px) {
